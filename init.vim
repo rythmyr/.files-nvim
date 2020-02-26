@@ -160,6 +160,15 @@ augroup typescript
 augroup END
 
 command! SetTypescriptOptions call s:setTypescriptOptions()
+augroup javascript
+    autocmd!
+    autocmd FileType javascript call s:setTypescriptOptions()
+augroup END
+
+augroup javascriptreact
+    autocmd!
+    autocmd FileType javascriptreact call s:setTypescriptOptions()
+augroup END
 
 "c++ stuff
 fun! s:setCppOptions()
