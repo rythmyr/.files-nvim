@@ -23,6 +23,10 @@ Plug 'herringtondarkholme/yats.vim'
 
 " solarized theme
 Plug 'altercation/vim-colors-solarized'
+
+" Smoother Scrolling
+Plug 'yuttie/comfortable-motion.vim'
+
 call plug#end()
 
 "====================="
