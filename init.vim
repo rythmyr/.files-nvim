@@ -147,6 +147,12 @@ nnoremap <silent> <C-d> <nop>
 nnoremap <silent> <C-u> <nop>
 nnoremap <silent> <C-b> :call comfortable_motion#flick(-200)<CR>
 nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>
+
+
+"=========================="
+"Language-specific settings"
+"=========================="
+
 "typescript stuff
 fun! s:setTypescriptOptions()
     imap <buffer> <C-Space> <c-x><c-o>
