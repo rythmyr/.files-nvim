@@ -141,6 +141,12 @@ endif
 "plugin settings"
 "==============="
 
+" comfortable-motion.vim
+let g:comfortable_motion_no_default_key_mappings = 1
+nnoremap <silent> <C-d> <nop>
+nnoremap <silent> <C-u> <nop>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(-200)<CR>
+nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>
 "typescript stuff
 fun! s:setTypescriptOptions()
     imap <buffer> <C-Space> <c-x><c-o>
