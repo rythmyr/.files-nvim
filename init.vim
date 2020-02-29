@@ -82,10 +82,6 @@ nnoremap <leader>ss :syntax sync fromstart<cr>
 noremap _ :normal ddkP<cr>
 noremap - :normal ddp<cr>
 
-" surround selection with single/double quotes
-vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
-vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
-
 " indenting using visual mode keeps selection
 vnoremap < <gv
 vnoremap > >gv
