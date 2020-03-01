@@ -24,9 +24,6 @@ Plug 'herringtondarkholme/yats.vim'
 " solarized theme
 Plug 'altercation/vim-colors-solarized'
 
-" Smoother Scrolling
-Plug 'yuttie/comfortable-motion.vim'
-
 call plug#end()
 
 "====================="
@@ -109,6 +106,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+nnoremap <silent> <C-d> <nop>
+nnoremap <silent> <C-u> <nop>
+
 command! Find CocList files
 
 "=================="
@@ -136,18 +136,6 @@ endfun
 if filereadable(findfile('package.json', ';'))
     set path=src/**,.,, " everything we care about usually is in src/ for npm projects
 endif
-
-"==============="
-"plugin settings"
-"==============="
-
-" comfortable-motion.vim
-let g:comfortable_motion_no_default_key_mappings = 1
-nnoremap <silent> <C-d> <nop>
-nnoremap <silent> <C-u> <nop>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(-200)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>
-
 
 "=========================="
 "Language-specific settings"
