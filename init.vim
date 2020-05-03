@@ -7,23 +7,13 @@ let &packpath = &runtimepath
 "plugin management"
 "================="
 call plug#begin('~/.local/nvim/plugged')
-" support for .editorconfig files
 Plug 'editorconfig/editorconfig-vim'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-tsserver coc-json coc-tslint-plugin coc-lists'}
-
 Plug 'tpope/vim-surround'
-
-" git plugins
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-
-" typescript support
-Plug 'herringtondarkholme/yats.vim'
-
-" solarized theme
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'altercation/vim-colors-solarized'
-
 call plug#end()
 
 "====================="
