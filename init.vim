@@ -12,6 +12,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-tsserver 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-dispatch'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'altercation/vim-colors-solarized'
 call plug#end()
