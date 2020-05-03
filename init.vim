@@ -121,13 +121,6 @@ fun! s:localTerminal()
     execute 'lcd ' . l:vim_current_dir
 endfun
 
-"=================="
-"npm-based projects"
-"=================="
-if filereadable(findfile('package.json', ';'))
-    set path=src/**,.,, " everything we care about usually is in src/ for npm projects
-endif
-
 "=========================="
 "Language-specific settings"
 "=========================="
