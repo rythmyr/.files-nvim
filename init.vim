@@ -15,6 +15,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-dispatch'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'morhetz/gruvbox'
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 "====================="
