@@ -101,9 +101,6 @@ nnoremap <leader>wr :tabN<cr>
 nnoremap <leader>ws :split<cr>
 nnoremap <leader>wv :vsplit<cr>
 
-nnoremap <silent> <C-d> <nop>
-nnoremap <silent> <C-u> <nop>
-
 command! Find CocList files
 
 "=================="
