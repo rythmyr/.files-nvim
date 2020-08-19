@@ -8,7 +8,7 @@ let &packpath = &runtimepath
 "================="
 call plug#begin('~/.local/nvim/plugged')
 Plug 'editorconfig/editorconfig-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-tsserver coc-json coc-tslint-plugin coc-lists'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-eslint coc-tsserver coc-json coc-tslint-plugin coc-lists'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
