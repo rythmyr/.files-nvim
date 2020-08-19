@@ -95,15 +95,11 @@ nnoremap gp `[v`]
 nnoremap i :noh<cr>i
 
 " easier tab switching
-nnoremap <C-w>t :tabn<cr>
-nnoremap <C-w><C-t> :tabn<cr>
-nnoremap <C-w>r :tabN<cr>
-nnoremap <C-w><C-r> :tabN<cr>
-
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <leader>w <c-w>
+nnoremap <leader>wt :tabn<cr>
+nnoremap <leader>wr :tabN<cr>
+nnoremap <leader>ws :split<cr>
+nnoremap <leader>wv :vsplit<cr>
 
 nnoremap <silent> <C-d> <nop>
 nnoremap <silent> <C-u> <nop>
