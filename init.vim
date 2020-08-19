@@ -80,6 +80,8 @@ noremap - :normal ddp<cr>
 vnoremap < <gv
 vnoremap > >gv
 
+nnoremap Y y$
+
 " complete with tab instead of <c-n> or <c-p>
 inoremap <expr> <tab> pumvisible() ? "\<Down>" : "\<tab>"
 inoremap <expr> <s-tab> pumvisible() ? "\<Up>" : "\<s-tab>"
