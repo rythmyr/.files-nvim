@@ -67,7 +67,7 @@ augroup END
 
 nnoremap <space> <nop>
 let mapleader = " "
-nnoremap <leader>ec :tabnew $MYVIMRC<cr>
+nnoremap <leader>ce :tabnew $MYVIMRC<cr>
 nnoremap <leader>cr :source $MYVIMRC<cr>
 
 nnoremap <leader>ss :syntax sync fromstart<cr>
