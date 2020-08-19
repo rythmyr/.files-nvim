@@ -14,13 +14,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-dispatch'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 "====================="
 "universal vim options"
 "====================="
-colorscheme solarized "solarized colorscheme, available with plugin 'altercation/vim-colors-solarized'
+colorscheme gruvbox "gruvbox colorscheme, available with plugin 'morhetz/gruvbox'
 set hidden " can move away from buffer without saving first
 set number " shows line number on current line (or all lines if relativenumber not set
 set relativenumber " shows line numbers relative to current line
