@@ -56,6 +56,11 @@ set path=,,.,**
 " use purple as the background for showing search matches
 hi Search ctermfg=13
 
+augroup allBuffers
+    autocmd!
+    autocmd BufNewFile,BufRead * setlocal fo-=cro
+augroup END
+
 "=================="
 "universal mappings"
 "=================="
