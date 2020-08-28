@@ -104,8 +104,6 @@ nnoremap <leader>wv :vsplit<cr>
 nnoremap n nzz
 nnoremap N Nzz
 
-command! Find CocList files
-
 "=================="
 "universal commands"
 "=================="
@@ -124,6 +122,29 @@ fun! s:localTerminal()
     terminal
     execute 'lcd ' . l:vim_current_dir
 endfun
+
+fun! s:files(bang)
+    if (a:bang == '!' || !exists('s:files_buffer'))
+        enew
+        if (exists('s:files_buffer'))
+            exec 'bw ' . s:files_buffer
+        endif
+        let s:files_buffer=bufnr("%")
+        exec 'silent read !rg --files ' . get(g:, 'files_rg_args', '')
+        %sort
+        setlocal buftype=nofile
+        setlocal bufhidden=hide
+        setlocal nobuflisted
+        setlocal noswapfile
+        setlocal readonly
+        setlocal nomodifiable
+        nnoremap <buffer> <CR> gf
+    else
+        exec 'b ' . s:files_buffer
+    endif
+endfun
+
+command! -bang -nargs=0 Find call s:files('<bang>')
 
 "=========================="
 "Language-specific settings"
