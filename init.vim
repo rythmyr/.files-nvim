@@ -59,11 +59,6 @@ set shada+=n~/.local/nvim/viminfo " don't put stuff in the home directory
 set timeoutlen=250 " 250 ms max between keypresses in a keybind
 set splitbelow
 set splitright
-" for tab-completing filenames in vim commands, use recursive in current directory. forget /usr/includes. we don't need it.
-" empty string = dir vim was opened in
-" dot = directory current file is in
-" ** = recursive, relative to dir vim was opened in
-set path=,,.,**
 
 " use purple as the background for showing search matches
 hi Search ctermfg=13
