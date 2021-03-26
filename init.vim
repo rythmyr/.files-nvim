@@ -8,7 +8,7 @@ let &packpath = &runtimepath
 "================="
 call plug#begin('~/.local/nvim/plugged')
 Plug 'editorconfig/editorconfig-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-eslint coc-tsserver coc-json coc-tslint-plugin coc-lists'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -17,6 +17,18 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
 call plug#end()
+
+"CoC extensions
+let g:coc_global_extensions = [
+    \ 'coc-eslint',
+    \ 'coc-tsserver',
+    \ 'coc-json',
+    \ 'coc-tslint-plugin',
+    \ 'coc-lists',
+    \ 'coc-omnisharp',
+    \ 'coc-prettier'
+    \]
+
 
 "====================="
 "universal vim options"
