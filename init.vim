@@ -204,6 +204,22 @@ augroup END
 
 command! SetCppOptions call s:setCppOptions()
 
+fun! s:setCSharpOptions()
+    imap <buffer> <C-Space> <c-x><c-o>
+    nmap <buffer> <leader>lu <Plug>(coc-references)
+    nmap <buffer> <leader>ld <Plug>(coc-definition)
+    nmap <buffer> <leader>lt <Plug>(coc-type-definition)
+    nmap <buffer> <leader>lr <Plug>(coc-rename)
+    nmap <buffer> <leader>lf <Plug>(coc-fix-current)
+    nmap <buffer> <leader>ls :CocList -I symbols<cr>
+    nnoremap <buffer> <leader>l/ I// <c-\><c-n>
+    nnoremap <buffer> <leader>l? :s/\/\/ \?//<cr>:noh<cr>
+    nnoremap <buffer> <leader>lz vi{zf
+endfun
+augroup csharp
+    autocmd!
+    autocmd FileType cs call s:setCSharpOptions()
+augroup END
 
 "html stuff
 fun! s:setHtmlOptions()
