@@ -111,11 +111,14 @@ nnoremap <leader>wv :vsplit<cr>
 nnoremap n nzz
 nnoremap N Nzz
 
+" windows visually glitches a lot, this is the only way I've found to fix it afterward easily
+" <C-n> is same as j/down arrow normally (in normal mode), <C-p> I'm guessing is the same as k/up arrow
+nnoremap <C-n> :mode<cr>
+
 "=================="
 "universal commands"
 "=================="
 
-command! Scratch new<bar>resize 16<bar>setlocal buftype=nofile " open a scratch buffer and make it not huge
 command! Term split<bar>resize 20<bar>normal <c-w>J:term<cr>
 " start a terminal in the directory the current file is in
 " the normal command doesn't work inside of the function for some reason
@@ -149,9 +152,30 @@ fun! s:files(bang)
     else
         exec 'b ' . s:files_buffer
     endif
+    exec 'CocList -I --ignore-case lines'
 endfun
 
 command! -bang -nargs=0 Find call s:files('<bang>')
+command! -bang -nargs=0 Tabf tab split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Tabfind tab split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Splitf split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Spf split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Splitfind split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Spfind split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Vfind vertical split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Vertfind vertical split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Vf vertical split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Vertf vertical split<bar>call s:files('<bang>')
+
+fun! s:scratch(mods)
+    exec a:mods . ' new scratch'
+    setlocal buftype=nofile
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    setlocal nobuflisted
+endfun
+
+command! Scratch call s:scratch('<mods>')
 
 "=========================="
 "Language-specific settings"
