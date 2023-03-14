@@ -16,6 +16,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
+Plug 'MaxMEllon/vim-jsx-pretty'
 call plug#end()
 
 "CoC extensions
@@ -30,13 +31,14 @@ let g:coc_global_extensions = [
     \]
 
 
+let g:gruvbox_termcolors=16
 "====================="
 "universal vim options"
 "====================="
 colorscheme gruvbox "gruvbox colorscheme, available with plugin 'morhetz/gruvbox'
 set hidden " can move away from buffer without saving first
-set number " shows line number on current line (or all lines if relativenumber not set
-set relativenumber " shows line numbers relative to current line
+set number " shows line number on current line (or all lines if relativenumber not set)
+" set relativenumber " shows line numbers relative to current line
 set numberwidth=5 " set the number of columns of the line numbers to 5 (4 digits + space)
 set so=7 " leave at least 7 lines before/after cursor while scrolling up/down
 set wildmenu " menu while tab completing commands
@@ -49,7 +51,7 @@ set sw=4 " shift width, when tab is pressed, move in 4 spaces
 set et " expandtab, use spaces instead of tabs when tab is pressed
 set ts=4 " tabstop, display tab characters as 4 spaces
 set incsearch " show matches as I search instead of after I press return
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,space:·,trail:·,eol:↲ " Used for showing whitespace, set to characters I don't type
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,space:·,trail:·,eol:$ " Used for showing whitespace, set to characters I don't type
 set list " show invisible characters
 set updatetime=500 " How long to wait after I type a character in normal mode to fire events
 set signcolumn=yes " always show columns for git gutter, syntax errors, etc
@@ -59,6 +61,7 @@ set shada+=n~/.local/nvim/viminfo " don't put stuff in the home directory
 set timeoutlen=250 " 250 ms max between keypresses in a keybind
 set splitbelow
 set splitright
+set sessionoptions=curdir,tabpages,winsize
 
 " use purple as the background for showing search matches
 hi Search ctermfg=13
@@ -155,17 +158,14 @@ fun! s:files(bang)
     exec 'CocList -I --ignore-case lines'
 endfun
 
+command! -bang -nargs=0 F call s:files('<bang>')
 command! -bang -nargs=0 Find call s:files('<bang>')
-command! -bang -nargs=0 Tabf tab split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Tf tab split<bar>call s:files('<bang>')
 command! -bang -nargs=0 Tabfind tab split<bar>call s:files('<bang>')
-command! -bang -nargs=0 Splitf split<bar>call s:files('<bang>')
-command! -bang -nargs=0 Spf split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Sf split<bar>call s:files('<bang>')
 command! -bang -nargs=0 Splitfind split<bar>call s:files('<bang>')
-command! -bang -nargs=0 Spfind split<bar>call s:files('<bang>')
-command! -bang -nargs=0 Vfind vertical split<bar>call s:files('<bang>')
-command! -bang -nargs=0 Vertfind vertical split<bar>call s:files('<bang>')
 command! -bang -nargs=0 Vf vertical split<bar>call s:files('<bang>')
-command! -bang -nargs=0 Vertf vertical split<bar>call s:files('<bang>')
+command! -bang -nargs=0 Vertfind vertical split<bar>call s:files('<bang>')
 
 fun! s:scratch(mods)
     exec a:mods . ' new scratch'
@@ -193,6 +193,8 @@ fun! s:setTypescriptOptions()
     nnoremap <buffer> <leader>l/ I// <c-\><c-n>
     nnoremap <buffer> <leader>l? :s/\/\/ \?//<cr>:noh<cr>
     nnoremap <buffer> <leader>lz vi{zf
+    setlocal path=.,src,node_modules,
+    setlocal suffixesadd=.js,.ts,.jsx,.tsx
 endfun
 augroup typescript
     autocmd!
@@ -208,6 +210,11 @@ augroup END
 augroup javascriptreact
     autocmd!
     autocmd FileType javascriptreact call s:setTypescriptOptions()
+augroup END
+
+augroup typescriptreact
+    autocmd!
+    autocmd FileType typescriptreact call s:setTypescriptOptions()
 augroup END
 
 "c++ stuff
