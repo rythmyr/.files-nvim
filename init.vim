@@ -80,11 +80,10 @@ let mapleader = " "
 nnoremap <leader>ce :tabnew $MYVIMRC<cr>
 nnoremap <leader>cr :source $MYVIMRC<cr>
 
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 nnoremap <leader>ss :syntax sync fromstart<cr>
-
-" move lines up and down
-noremap _ :normal ddkP<cr>
-noremap - :normal ddp<cr>
 
 " indenting using visual mode keeps selection
 vnoremap < <gv
@@ -96,6 +95,7 @@ nnoremap Y y$
 inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <expr> <s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
+" toggle folds
 nnoremap <leader><tab> za
 
 " hilight last pasted content
@@ -129,9 +129,8 @@ command! Lterm call s:localTerminal()<bar>normal <c-w>Ji
 fun! s:localTerminal()
     let l:vim_dir = expand('%:p:h')
     let l:vim_current_dir = getcwd()
-    split
+    tab split
     execute 'lcd ' . l:vim_dir
-    resize 20
     terminal
     execute 'lcd ' . l:vim_current_dir
 endfun
@@ -143,7 +142,7 @@ fun! s:files(bang)
             exec 'bw ' . s:files_buffer
         endif
         let s:files_buffer=bufnr("%")
-        exec 'silent read !rg --files ' . get(g:, 'files_rg_args', '')
+        exec 'silent read !rg --files ' . escape(get(g:, 'files_rg_args', '.'), '!')
         %sort
         setlocal buftype=nofile
         setlocal bufhidden=hide
@@ -166,6 +165,11 @@ command! -bang -nargs=0 Sf split<bar>call s:files('<bang>')
 command! -bang -nargs=0 Splitfind split<bar>call s:files('<bang>')
 command! -bang -nargs=0 Vf vertical split<bar>call s:files('<bang>')
 command! -bang -nargs=0 Vertfind vertical split<bar>call s:files('<bang>')
+
+nnoremap <leader>ff :Find<cr>
+nnoremap <leader>ft :Tabfind<cr>
+nnoremap <leader>fs :Splitfind<cr>
+nnoremap <leader>fv :Vertfind<cr>
 
 fun! s:scratch(mods)
     exec a:mods . ' new scratch'
